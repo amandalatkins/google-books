@@ -1,7 +1,7 @@
 import React, { useReducer, useRef } from "react";
 // import API from "../../utils/API";
 import { useStoreContext } from "../utils/GlobalState";
-import API from "../";
+import API from "../utils/API";
 
 const Home = () => {
   // allow access to context
@@ -11,7 +11,13 @@ const Home = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("it worked");
+    console.log(inputRef.current.value);
+
+    API.searchBook(inputRef.current.value)
+      .then(result => {
+        console.log(result);
+      })
+      .catch(err => console.log(err));
   };
 
   return (

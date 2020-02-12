@@ -18,7 +18,7 @@ export default {
     return axios.post("/api/books", postData);
   },
   // search for book
-  seachBook: function(title) {
-    return axios.get("/api/search" + title);
+  searchBook: function(title) {
+    return axios.get("/api/search/" + title);
   }
 };
