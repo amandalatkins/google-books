@@ -45,11 +45,13 @@ const SavedList = () => {
                         </td>
                         <td>
                           <h5>{book.title}</h5>
+                          <p>by <strong>{book.authors}</strong></p>
                           <p>{book.description}</p>
                         </td>
                         <td>
-                          <a href={book.link} className="btn btn-primary" target="_blank">View</a>
-                          <a href="#" onClick={() => handleClick(book._id)} class="btn btn-danger">Remove</a>
+                          <a href={`/book/${book._id}`} className="btn btn-primary">View</a>
+                          <a href={book.link} className="btn btn-secondary" target="_blank">Google</a>
+                          <a href="#" onClick={() => handleClick(book._id)} className="btn btn-danger">Remove</a>
                         </td>
                       </tr>
                     );
