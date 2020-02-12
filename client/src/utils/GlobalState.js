@@ -10,6 +10,8 @@ const reducer = function(state, action) {
   switch (action.type) {
     case "one":
       return "Hello";
+    case "loadSaved":
+      return action.books;
     default:
       return state;
   }
