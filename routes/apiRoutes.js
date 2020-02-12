@@ -1,4 +1,5 @@
 const Book = require("../models/Book.js");
+const axios = require("axios");
 
 module.exports = app => {
 
@@ -29,6 +30,18 @@ module.exports = app => {
         Book.deleteOne({ _id: params.id })
         .then(deletedBook => res.json(deletedBook))
         .catch(err => res.status(400).json(err));
+    });
+
+    // Search Google for Book
+    app.get('/api/search/:terms', ({params}, res) => {
+        
+        const apiKey = "AIzaSyB_iJaY0R_CTYUQRcH_oAGEHE9klqg9Vrs";
+        var queryUrl = "https://www.googleapis.com/books/v1/volumes?q="+params.terms+"&apiKey="+apiKey;
+
+        axios.get(queryUrl)
+        .then(results => res.json(results.data.items))
+        .catch(err => res.status(400).json(err));
+        
     });
 
 }
