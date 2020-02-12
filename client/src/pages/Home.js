@@ -1,6 +1,7 @@
 import React, { useReducer, useRef } from "react";
 // import API from "../../utils/API";
 import { useStoreContext } from "../utils/GlobalState";
+import API from "../";
 
 const Home = () => {
   // allow access to context
@@ -8,38 +9,43 @@ const Home = () => {
 
   const inputRef = useRef();
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    console.log("it worked");
+  };
+
   return (
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="jumbotron text-center">
-            <div class="container">
-              <h1 class="display-4">Google Search Books</h1>
-              <p class="lead">Forget books, hit the gym instead</p>
+    <div className="container">
+      <div className="row">
+        <div className="col-sm-12">
+          <div className="jumbotron text-center">
+            <div className="container">
+              <h1 className="display-4">Google Search Books</h1>
+              <p className="lead">Forget books, hit the gym instead</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-12">
-          <form>
-            <div class="form-group mx-sm-3 mb-2">
+      <div className="row">
+        <div className="col-sm-12">
+          <form onSubmit={handleSubmit}>
+            <div className="form-group mx-sm-3 mb-2">
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="bookSearchInput"
                 placeholder="Search book title"
                 ref={inputRef}
               ></input>
-              <button type="submit" class="btn btn-primary mb-2">
+              <button type="submit" className="btn btn-primary mb-2">
                 Search
               </button>
             </div>
           </form>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-12">
+      <div className="row">
+        <div className="col-sm-12">
           <div>results shit</div>
         </div>
       </div>
