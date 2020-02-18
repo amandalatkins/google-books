@@ -12,6 +12,8 @@ const reducer = function(state, action) {
       return "Hello";
     case "loadSaved":
       return action.books;
+    case "bookSearch":
+      return action.results;
     default:
       return state;
   }
@@ -19,7 +21,18 @@ const reducer = function(state, action) {
 
 const StoreProvider = function({ value = [], ...props }) {
   // useReducer takes the reduer function and a default val, return array of two things which we are assigning to state and dispatch
-  const [state, dispatch] = useReducer(reducer, []);
+  const [state, dispatch] = useReducer((state, action) => {
+    switch (action.type) {
+      case "one":
+        return "Hello";
+      case "loadSaved":
+        return action.books;
+      case "bookSearch":
+        return action.results;
+      default:
+        return state;
+    }
+  }, []);
 
   return <Provider value={[state, dispatch]} {...props} />;
 };
